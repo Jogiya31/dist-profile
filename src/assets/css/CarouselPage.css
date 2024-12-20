@@ -1,0 +1,250 @@
+/* ---------------------------scheme cards-------------------------------------- */
+.sector-card {
+    /* Background image */
+    background-image: url("../images/schemCardBg.png");
+    background-size: cover;
+    /* Ensures the image covers the entire card */
+    background-position: center;
+    /* Centers the background image */
+    background-repeat: no-repeat;
+    /* Prevents image repetition */
+}
+
+.carousel-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    position: relative;
+}
+
+.slick-list {
+    height: 250px !important;
+    margin-left: -32px !important;
+}
+
+.slick-track {
+    top: 50px !important;
+
+}
+
+.slick-slide {
+    transition: transform 0.5s, opacity 0.5s;
+    opacity: 0.5;
+    /* Default opacity for side cards */
+    transform: scale(0.8);
+    /* Default smaller size for side cards */
+}
+
+.slick-center {
+    opacity: 1 !important;
+    /* Full opacity for the center card */
+    transform: scale(1.1);
+    /* Larger size for center card */
+}
+
+.sector-card {
+    padding: 20px;
+    height: 160px;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+}
+
+.sector-card .sectorName {
+    color: #CCB102;
+    font-size: 12px;
+}
+
+.sector-card h3 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.sector-card span,
+.count {
+    border-style: dotted;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.slick-slide.slick-active.slick-center.slick-current {
+    margin: 0 50px !important;
+}
+
+.sector-content {
+    width: 73%;
+}
+
+.sectorLogo {
+    position: absolute;
+    right: -48px;
+    width: 150px;
+}
+
+/* -------------------------end scheme cards--------------------------------------- */
+
+/* -----------------------------KPI Cards------------------------------------------------- */
+.card-scroller {
+    display: flex;
+    flex-direction: row-reverse;
+    /* Optional: Start from right */
+    overflow-x: scroll;
+    /* Prevent scrollbars from showing */
+    gap: 16px;
+    /* Space between cards */
+    padding: 16px;
+    /* Optional padding around the scroller */
+    cursor: grab;
+    /* Indicate draggable area */
+    scroll-behavior: smooth;
+    /* Smooth scrolling for manual interactions */
+}
+
+.card-scroller:active {
+    cursor: grabbing;
+    /* Grabbing cursor when dragging */
+}
+
+.info-card {
+    min-width: 311px;
+    height: 110px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    user-select: none;
+    border-top: 5px solid #4C8CDA;
+    border-bottom: 5px solid #4C8CDA;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-content .schemeName {
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.subtitle {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.subtitle p {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.subtitle h3 {
+    font-size: 16px;
+}
+
+.info-arrow {
+    display: flex;
+    align-items: end;
+    font-size: 24px;
+    margin-bottom: 7px;
+}
+
+
+
+.logoSection {
+    background-image: url('../images/logoBg.png');
+    background-position: center;
+    background-size: cover;
+    width: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+}
+
+.Schemelogos {
+    width: 60px;
+}
+
+
+.view-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.view-more button {
+    background: #4C8CDA;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.view-more button:hover {
+    background: #4C8CDA;
+}
+
+.view-more button .rightarrow {
+    rotate: 90deg;
+    width: 12px;
+    margin-left: 10px
+}
+
+
+.slick-arrow {
+    top: -10px !important;
+    right: 0 !important;
+    position: absolute !important;
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.slick-prev {
+    left: 95% !important;
+}
+
+.slick-prev:before {
+    font-size: 32px !important;
+    color: #adadad !important;
+    background-color: transparent !important;
+    opacity: 1 !important;
+}
+
+.slick-next:before {
+    font-size: 32px !important;
+    color: #4C8CDA !important;
+    background-color: transparent !important;
+    opacity: 1 !important;
+}
+
+
+
+
+
+
+
+
+/* -------------------------end KPI Cards---------------------------------------- */

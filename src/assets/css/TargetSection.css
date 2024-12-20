@@ -1,0 +1,103 @@
+/* -------------------------start target header ------------------------------------ */
+.target-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.target-header-left {
+  display: flex;
+  align-items: center;
+}
+
+.target-header-left .header-logo {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.target-header-right {
+  display: flex;
+  width: auto;
+  align-items: center;
+}
+
+.target-header-right .header-logo {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
+
+/* -----------------------end target header-------------------------------------- */
+/* -------------------------target cards ------------------------------------ */
+.target-card-section {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.target-card {
+  padding: 10px 15px 15px 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.target-card .target-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.target-card .logo {
+  width: 60px;
+  height: 60px;
+}
+
+.per-achieved {
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: 11px;
+  background-color: #3abf4c;
+}
+
+.target-content {
+  display: flex;
+}
+
+.target-content .present {
+  background-color: rgba(255, 194, 137, 0.2);
+  border: 1px soild #ccc;
+}
+
+.target-content .target {
+  background-color: rgba(126, 236, 75, 0.2);
+  border: 1px soild #ccc;
+}
+
+/* -------------------------end target cards ------------------------------------ */
+
+/* --------------------------tabs section--------------------------------------------- */
+/* .custom-container.insites {
+  display: flex;
+  justify-content: space-between;
+} */
+
+.insites-left .tab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tab .NA{
+  width: 50px;
+  height: 50px;
+}
+
+.tab .bulb{
+  width: 50px;
+  height: 50px;
+}
+
+
+/* --------------------------end tabs section--------------------------------------------- */
