@@ -1,250 +1,325 @@
 /* ---------------------------scheme cards-------------------------------------- */
 .sector-card {
-    /* Background image */
-    background-image: url("../images/schemCardBg.png");
-    background-size: cover;
-    /* Ensures the image covers the entire card */
-    background-position: center;
-    /* Centers the background image */
-    background-repeat: no-repeat;
-    /* Prevents image repetition */
+  /* Background image */
+  background-image: url("../images/schemCardBg.png");
+  background-size: cover;
+  /* Ensures the image covers the entire card */
+  background-position: center;
+  /* Centers the background image */
+  background-repeat: no-repeat;
+  /* Prevents image repetition */
 }
 
 .carousel-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    position: relative;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  position: relative;
 }
 
 .slick-list {
-    height: 250px !important;
-    margin-left: -32px !important;
+  height: 250px !important;
+  margin-left: -32px !important;
 }
 
 .slick-track {
-    top: 50px !important;
-
+  top: 50px !important;
 }
 
 .slick-slide {
-    transition: transform 0.5s, opacity 0.5s;
-    opacity: 0.5;
-    /* Default opacity for side cards */
-    transform: scale(0.8);
-    /* Default smaller size for side cards */
+  transition: transform 0.5s, opacity 0.5s;
+  opacity: 0.5;
+  /* Default opacity for side cards */
+  transform: scale(0.8);
+  /* Default smaller size for side cards */
 }
 
 .slick-center {
-    opacity: 1 !important;
-    /* Full opacity for the center card */
-    transform: scale(1.1);
-    /* Larger size for center card */
+  opacity: 1 !important;
+  /* Full opacity for the center card */
+  transform: scale(1.1);
+  /* Larger size for center card */
 }
 
 .sector-card {
-    padding: 20px;
-    height: 160px;
-    display: flex !important;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    font-family: Arial, sans-serif;
+  padding: 20px;
+  height: 160px;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
 }
 
 .sector-card .sectorName {
-    color: #CCB102;
-    font-size: 12px;
+  color: #ccb102;
+  font-size: 12px;
 }
 
 .sector-card h3 {
-    margin: 0;
-    font-size: 1.5em;
+  margin: 0;
+  font-size: 1.5em;
 }
 
 .sector-card span,
 .count {
-    border-style: dotted;
-    border: 1px solid #fff;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: bold;
-    width: 35px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin-top: 12px;
+  border-style: dotted;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 12px;
 }
 
 .slick-slide.slick-active.slick-center.slick-current {
-    margin: 0 50px !important;
+  margin: 0 50px !important;
 }
 
 .sector-content {
-    width: 73%;
+  width: 73%;
 }
 
 .sectorLogo {
-    position: absolute;
-    right: -48px;
-    width: 150px;
+  position: absolute;
+  right: -48px;
+  width: 150px;
 }
 
 /* -------------------------end scheme cards--------------------------------------- */
 
 /* -----------------------------KPI Cards------------------------------------------------- */
 .card-scroller {
-    display: flex;
-    flex-direction: row-reverse;
-    /* Optional: Start from right */
-    overflow-x: scroll;
-    /* Prevent scrollbars from showing */
-    gap: 16px;
-    /* Space between cards */
-    padding: 16px;
-    /* Optional padding around the scroller */
-    cursor: grab;
-    /* Indicate draggable area */
-    scroll-behavior: smooth;
-    /* Smooth scrolling for manual interactions */
+  display: flex;
+  flex-direction: row-reverse;
+  /* Optional: Start from right */
+  overflow-x: scroll;
+  /* Prevent scrollbars from showing */
+  gap: 16px;
+  /* Space between cards */
+  padding: 16px;
+  /* Optional padding around the scroller */
+  cursor: grab;
+  /* Indicate draggable area */
+  scroll-behavior: smooth;
+  /* Smooth scrolling for manual interactions */
 }
 
 .card-scroller:active {
-    cursor: grabbing;
-    /* Grabbing cursor when dragging */
+  cursor: grabbing;
+  /* Grabbing cursor when dragging */
 }
 
 .info-card {
-    min-width: 311px;
-    height: 110px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 8px;
-    user-select: none;
-    border-top: 5px solid #4C8CDA;
-    border-bottom: 5px solid #4C8CDA;
+  min-width: 311px;
+  height: 110px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  user-select: none;
+  border-top: 5px solid #4c8cda;
+  border-bottom: 5px solid #4c8cda;
 }
 
 .info-content {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .info-content .schemeName {
-    font-size: 14px;
-    line-height: 1.2;
-    margin: 0;
+  font-size: 14px;
+  line-height: 1.2;
+  margin: 0;
 }
 
 .subtitle {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-top: 10px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 10px;
 }
 
 .subtitle p {
-    font-size: 12px;
-    color: #6c757d;
+  font-size: 12px;
+  color: #6c757d;
 }
 
 .subtitle h3 {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .info-arrow {
-    display: flex;
-    align-items: end;
-    font-size: 24px;
-    margin-bottom: 7px;
+  display: flex;
+  align-items: end;
+  font-size: 24px;
+  margin-bottom: 7px;
 }
 
-
-
 .logoSection {
-    background-image: url('../images/logoBg.png');
-    background-position: center;
-    background-size: cover;
-    width: 110px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 110px;
+  background-image: url("../images/logoBg.png");
+  background-position: center;
+  background-size: cover;
+  width: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110px;
 }
 
 .Schemelogos {
-    width: 60px;
+  width: 60px;
 }
 
-
 .view-more {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .view-more button {
-    background: #4C8CDA;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 50px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
+  background: #4c8cda;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
 }
 
 .view-more button:hover {
-    background: #4C8CDA;
+  background: #4c8cda;
 }
 
 .view-more button .rightarrow {
-    rotate: 90deg;
-    width: 12px;
-    margin-left: 10px
+  rotate: 90deg;
+  width: 12px;
+  margin-left: 10px;
 }
 
-
 .slick-arrow {
-    top: -10px !important;
-    right: 0 !important;
-    position: absolute !important;
-    width: 30px !important;
-    height: 30px !important;
+  top: -10px !important;
+  right: 0 !important;
+  position: absolute !important;
+  width: 30px !important;
+  height: 30px !important;
 }
 
 .slick-prev {
-    left: 95% !important;
+  left: 95% !important;
 }
 
 .slick-prev:before {
-    font-size: 32px !important;
-    color: #adadad !important;
-    background-color: transparent !important;
-    opacity: 1 !important;
+  font-size: 32px !important;
+  color: #adadad !important;
+  background-color: transparent !important;
+  opacity: 1 !important;
 }
 
 .slick-next:before {
-    font-size: 32px !important;
-    color: #4C8CDA !important;
-    background-color: transparent !important;
-    opacity: 1 !important;
+  font-size: 32px !important;
+  color: #4c8cda !important;
+  background-color: transparent !important;
+  opacity: 1 !important;
 }
 
+@media (max-width: 1440px) {
+  .slick-prev {
+    left: 94% !important;
+  }
 
+  .sector-card h3 {
+    font-size: 1.2em;
+  }
 
+  .sectorLogo {
+    width: 130px;
+  }
+}
 
+@media (max-width: 1336px) {
+  .sectorLogo {
+    width: 112px;
+  }
 
+  .slick-prev {
+    left: 93% !important;
+  }
+}
 
+@media (max-width:1024px) {
+  .sector-card h3 {
+    font-size: 1em;
+  }
 
+  .sector-card {
+    padding: 20px;
+    height: 122px;
+  }
+
+  .sectorLogo {
+    width: 85px;
+  }
+
+  .slick-prev {
+    left: 90% !important;
+  }
+
+  .logoSection {
+    background-image: url(data:image/png;base64,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);
+    background-position: center;
+    background-size: cover;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95px;
+  }
+
+  .info-card {
+    min-width: 255px;
+    height: 95px;
+  }
+
+  .info-content .schemeName {
+    font-size: 12px;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .Schemelogos {
+    width: 54px;
+  }
+
+  .subtitle {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 0px;
+  }
+
+  .subtitle p {
+    font-size: 11px;
+  }
+
+  .subtitle h3 {
+    font-size: 14px;
+  }
+  .sectorLogo {
+    position: absolute;
+    right: -34px;}
+}
 
 /* -------------------------end KPI Cards---------------------------------------- */

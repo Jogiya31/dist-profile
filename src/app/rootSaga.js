@@ -1,6 +1,8 @@
 import { all } from "redux-saga/effects";
 import allSchemeSaga from "../redux/allScheme/allSchemeSaga";
 import filtersSaga from "../redux/filters/filtersSaga";
+import aboutSaga from "../redux/about/aboutSaga";
+import NAschemesSaga from "../redux/NAschemes/NAschemeSaga";
 
 /**
  * used to allow a Redux store to interact with resources itself asynchronously
@@ -12,6 +14,10 @@ export default function* rootSaga() {
     // Call and run the allSchemeSaga
     allSchemeSaga(),
     // Call and run the filtersSaga
-    filtersSaga(),
+    filtersSaga(),    
+    // Call and run the aboutSaga
+    aboutSaga(),   
+    // Call and run the NAschemesSaga
+    NAschemesSaga(),
   ]);
 }

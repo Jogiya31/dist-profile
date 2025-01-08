@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import "../assets/css/CarouselPage.css";
 import rightArrow from "../assets/images/b-rightArrow.png";
 import { useSelector } from "react-redux";
-import Loader from "./loader";
 
 const SchemesSection = () => {
   const scrollerRef = useRef(null);
@@ -37,6 +36,7 @@ const SchemesSection = () => {
   };
   useEffect(() => {
     if (allSchemesData && allSchemesData.Table && allSchemesData.Table.length) {
+
       // Count occurrences of sec_code
       const secCodeCounts =
         allSchemesData &&
@@ -188,6 +188,7 @@ const SchemesSection = () => {
               );
             })}
           </Slider>
+
           {/* Information Cards */}
           <div
             className="card-scroller"

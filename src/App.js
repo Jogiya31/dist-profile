@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { filtersActions } from "./redux/filters/filtersSlice";
 import { allSchemeActions } from "./redux/allScheme/allSchemeSlice";
 import { MultiSelect } from "react-multi-select-component";
+import { aboutActions } from "./redux/about/aboutSlice";
 
 function App() {
   const dispatch = useDispatch(); // Redux dispatch hook
@@ -33,6 +34,7 @@ function App() {
 
   const statesList = useSelector((state) => state.filters.states); // States list from Redux store
   const districtsList = useSelector((state) => state.filters.districts); // Districts list from Redux store
+  const aboutDistrict = useSelector((state) => state.about.data); // Districts list from Redux store
 
   // calling default api here
   useEffect(() => {
@@ -155,6 +157,7 @@ function App() {
   // Function to handle state filter selection
   const handleStateFilter = (newSelected) => {
     setCurrentFilter("state");
+
     if (newSelected.length) {
       const newAr = [newSelected[newSelected.length - 1]];
       setStateValue(newAr[0].label);
@@ -229,22 +232,27 @@ function App() {
         allSchemeActions.getAllSchemeInfo({
           MinistryCode: "0",
           sectorcode: 0,
+          StateCode: 0,
+          DistrictCode: 0,
+          FilterCode: 0,
+        })
+      ); // Fetch all scheme information
+
+      dispatch(
+        allSchemeActions.getAllSchemeInfoWithDistrict({
+          MinistryCode: "0",
+          sectorcode: 0,
           StateCode: filterPayload.StateCode,
           DistrictCode: filterPayload.DistrictCode,
           FilterCode: 0,
         })
       ); // Fetch all scheme information
+
+      dispatch(aboutActions.getaboutInfo(filterPayload)); // Fetch district information
+
       setshowData(true);
     }
   };
-
-  const insites = `Pilibhit is a city and district in northern Uttar Pradesh, India,
-   located near the Nepal border. Known for its rich biodiversity, it is home to the Pilibhit 
-   Tiger Reserve, which attracts wildlife enthusiasts. The district’s economy is primarily agricultural,
-    with crops like sugarcane, rice, and wheat being key outputs. Pilibhit has a cultural blend of Hindu
-     and Muslim traditions, with festivals celebrated enthusiastically. It is also known for the Sharda
-      Devi Mandir, a popular temple. The area faces challenges like infrastructure and water management
-       but remains an emerging destination for eco-tourism and rural development.`;
 
   return (
     <div className="wrapper">
@@ -283,8 +291,13 @@ function App() {
                 hasSelectAll={false}
               />
               <button
-                className="bg-customBlue w-[95px] text-white rounded-[4px] opacity-100"
+                className={`bg-customBlue w-[95px] text-white rounded-[4px]  ${
+                  districtValue === ""
+                    ? "opacity-35"
+                    : "opacity-100 cursor-pointer"
+                }`}
                 onClick={() => handleApply()}
+                disabled={districtValue === ""}
               >
                 Apply
               </button>
@@ -304,10 +317,13 @@ function App() {
                 stateFilter && stateFilter[0] && stateFilter[0].value
               }.svg`
             }
-            insites={insites}
+            insites={aboutDistrict && aboutDistrict.about}
           />
           <SchemesSection />
-          <TargetSection />
+          <TargetSection
+            stateValue={stateValue}
+            districtValue={districtValue}
+          />
           <ForecastSection />
         </main>
       ) : (

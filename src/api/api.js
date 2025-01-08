@@ -37,9 +37,28 @@ export const districtList = (data) => {
 
 // api call for get all sector list
 export const sectorList = () => {
-  // const url = `/prayasplus/ReportsApi/GetAllSectors`;
   const url = `/Prayas2.0_API/api/DemoController/GetAllSector`;
   return axiosClient().post(url);
+};
+
+
+// api call for get about info
+export const aboutInfo = (data) => {
+  const payload = data.payload;
+  const url = `/district_profilling`;
+  return axiosClient().post(url, payload, {
+    "Content-Type": "application/json",
+  });
+};
+
+
+// api call for get NAschemes info
+export const NAschemesInfo = (data) => {
+  const payload = data.payload;
+  const url = `/unimplemented_schemes`;
+  return axiosClient().post(url, payload, {
+    "Content-Type": "application/json",
+  });
 };
 
 

@@ -33,18 +33,22 @@ main {
 }
 
 .message {
-  color: #1269A9;
+  color: #1269a9;
   padding: 10px 20px;
-  border: 1px solid #1269A9;
+  border: 1px solid #1269a9;
   border-style: dotted;
   border-radius: 10px;
   font-weight: 600;
   font-size: 14px;
 }
 
-
 .header-img {
   height: 140px;
+}
+
+.distName {
+  font-size: 24px;
+  text-align: center;
 }
 
 .custom-container {
@@ -117,42 +121,110 @@ main {
 }
 
 .forcast-filter .dots {
-  height: 25px
+  height: 25px;
 }
 
 .forcast-filter .custome-select {
-  border: 1px solid #B2B6BF;
+  border: 1px solid #b2b6bf;
   border-radius: 4px;
   padding: 5px 10px;
   margin-right: 10px;
 }
 
 .page-footer {
-  background-color: #005EA4;
+  background-color: #005ea4;
   color: #fff;
   padding: 1rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
   .header-img {
-    height: 71px !important;
+    height: 130px;
+  }
+  .head-state {
+    margin-left: 5rem;
+  }
+  .StateImage {
+    width: 9rem;
+  }
+  .tab h2 {
+    font-size: 16px;
+  }
+  .tab h2 span {
+    font-size: 20px;
+  }
+  .target-header-left h2 {
+    font-size: 1.2rem;
+  }
+  .target-header-right h2 {
+    font-size: 1.2rem;
+  }
+  .page-footer {
+    font-size: 12px;
   }
 }
 
+@media (max-width: 1336px) {
+  .header-img {
+    height: 100px;
+  }
+  .head-state {
+    margin-left: 6rem;
+  }
+  .state-dist-name {
+    font-size: 14px;
+  }
+  .distName {
+    font-size: 16px;
+  }
+  .AspDistrict {
+    font-size: 12px;
+  }
+  .StateImage {
+    width: 8rem;
+  }
+  .sectorLogo {
+    width: 112px;
+  }
+  .slick-prev {
+    left: 93% !important;
+  }
+}
 
+@media (max-width: 1024px) {
+  .custom-container {
+    padding-left: 7rem;
+    padding-right: 7rem;
+}
+  .header-img {
+    height: 71px !important;
+  }
+  .head-state {
+    margin-left: 3rem;
+}
+
+.sector-card h3 {
+  font-size: 1em;
+}
+.sector-card {
+  padding: 20px;
+  height: 122px;
+}
+}
 
 /* HTML: <div class="loader"></div> */
 .loader {
   width: 150px;
   height: 8px;
-  background: linear-gradient(90deg, #0001 33%, #0000002b 50%, #0001 66%) #f2f2f2;
+  background: linear-gradient(90deg, #0001 33%, #0000002b 50%, #0001 66%)
+    #f2f2f2;
   background-size: 300% 100%;
   animation: l1 1s infinite linear;
 }
 
 @keyframes l1 {
   0% {
-    background-position: right
+    background-position: right;
   }
 }
 
@@ -167,6 +239,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   flex-direction: column;
   height: 100%;
   padding: 10px;
