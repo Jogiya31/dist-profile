@@ -89,15 +89,142 @@
   align-items: center;
 }
 
-.tab .NA{
+.tab .NA {
   width: 50px;
   height: 50px;
 }
 
-.tab .bulb{
+.tab .bulb {
   width: 50px;
   height: 50px;
 }
-
 
 /* --------------------------end tabs section--------------------------------------------- */
+
+/* @media (min-width: 1440px) {
+  .target-header-right h2 {
+    font-size: 1.1rem;
+  }
+  .target-card .logo {
+    width: 50px;
+    height: 50px;
+  }
+  .target-content h2 {
+    font-size: 0.75rem;
+  }
+  .present p {
+    font-size: 12px;
+  }
+  .target p {
+    font-size: 12px;
+  }
+
+  .present h3 {
+    font-size: 14px;
+  }
+  .target h3 {
+    font-size: 14px;
+  }
+  .target-header-right .header-logo {
+    width: 16px;
+    height: 16px;
+  }
+} */
+
+@media (max-width: 1336px) {
+  .target-header-left h2 {
+    font-size: 1.1rem;
+  }
+  .target-header-right h2 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .target-card .logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .target-title h2 {
+    font-size: 13px !important;
+  }
+  .per-achieved {
+    font-size: 10px;
+  }
+  .target-content h2 {
+    font-size: 0.75rem;
+  }
+  .present p {
+    font-size: 11px;
+  }
+  .target p {
+    font-size: 11px;
+  }
+
+  .present h3 {
+    font-size: 14px;
+  }
+  .target h3 {
+    font-size: 14px;
+  }
+
+  .tab h2 {
+    font-size: 14px;
+  }
+  .tab h2 span {
+    font-size: 16px;
+  }
+  .tab .NA {
+    width: 40px;
+    height: 40px;
+  }
+  .tab .bulb {
+    width: 40px;
+    height: 40px;
+  }
+  .target-card-header h2 {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .forcast-map .forcast-title {
+    font-size: 16px;
+  }
+  .forcast-filter .custome-select {
+    font-size: 10px;
+  }
+  .forcast-filter .dots {
+    height: 16px;
+  }
+  .forcast {
+    padding: 12px;
+  }
+  .forcast .scheme-title {
+    padding: 0.2rem;
+  }
+  .scheme-counts h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+  }
+  .scheme-counts .state-count,
+  .scheme-count,
+  .dist-count {
+    text-align: center;
+    width: 40px;
+    padding: 0.3rem !important;
+    margin-top: 8px;
+  }
+  .forcast .scheme-counts .scheme-count {
+    padding: 0.3rem !important;
+    margin-top: 8px;
+  }
+  .improvement-lists li {
+    font-size: 12px;
+  }
+  .page-footer {
+    font-size: 10px;
+  }
+}

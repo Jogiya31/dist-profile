@@ -1,6 +1,6 @@
 const HeroSection = ({ stateName, districtName, stateImg, insites }) => {
   return (
-    <div className="w-full p-6 bg-primary-bg">
+    <div className="w-full p-6 bg-primary-bg banner">
       <div className="grid grid-cols-[20%,60%,20%] gap-2 items-center">
         <div className="rounded-[5px] shadow-customShadow ml-[9rem] head-state">
           <div className="state-dist-name">

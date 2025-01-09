@@ -29,6 +29,7 @@ const TargetSection = ({ stateValue, districtValue }) => {
       presentValue: "34.09 L",
       targetValue: "62.53 L",
       percent: "50.5%",
+      Project_Code: "70003.png",
     },
     {
       scheme: "Jal Jeevan Mission",
@@ -36,6 +37,7 @@ const TargetSection = ({ stateValue, districtValue }) => {
       presentValue: "34.09 L",
       targetValue: "62.53 L",
       percent: "50.5%",
+      Project_Code: "70003.png",
     },
     {
       scheme: "Bharat Net",
@@ -43,6 +45,7 @@ const TargetSection = ({ stateValue, districtValue }) => {
       presentValue: "34.09 L",
       targetValue: "62.53 L",
       percent: "50.5%",
+      Project_Code: "70003.png",
     },
     {
       scheme: "Agriculture Infrastructure Fund",
@@ -50,6 +53,7 @@ const TargetSection = ({ stateValue, districtValue }) => {
       presentValue: "34.09 L",
       targetValue: "62.53 L",
       percent: "50.5%",
+      Project_Code: "70003.png",
     },
     {
       scheme: "Agriculture Infrastructure Fund",
@@ -57,6 +61,7 @@ const TargetSection = ({ stateValue, districtValue }) => {
       presentValue: "34.09 L",
       targetValue: "62.53 L",
       percent: "50.5%",
+      Project_Code: "70003.png",
     },
     {
       scheme: "Agriculture Infrastructure Fund",
@@ -64,6 +69,7 @@ const TargetSection = ({ stateValue, districtValue }) => {
       presentValue: "34.09 L",
       targetValue: "62.53 L",
       percent: "50.5%",
+      Project_Code: "70003.png",
     },
   ];
 
@@ -77,10 +83,30 @@ const TargetSection = ({ stateValue, districtValue }) => {
 
   useEffect(() => {
     const allschemesArray = allSchemesData.Table;
-    setdistrictCount(
+    const allSchemesDistrictDataArray = allSchemesDistrictData.Table;
+
+    // get district level schemes data from all schemes
+    const totalDistrictSchemes =
       allschemesArray &&
-        allschemesArray.filter((item) => item.Granularity !== "District")
-    );
+      allschemesArray.filter((item) => item.Granularity === "District");
+
+    // get district level schemes for selected filter
+    const schemesForDistrict =
+      allSchemesDistrictDataArray &&
+      allSchemesDistrictDataArray.filter(
+        (item) => item.Granularity === "District"
+      );
+
+    // Find NA district schemes in filtered state/district
+    const difference =
+      totalDistrictSchemes &&
+      totalDistrictSchemes.filter((obj1) => {
+        const isMatch = schemesForDistrict.some(
+          (obj2) => obj1.project_code === obj2.project_code
+        );
+        return !isMatch;
+      });
+    setdistrictCount(difference);
   }, [allSchemesData, allSchemesDistrictData]);
 
   const handleSchemeClick = (stateValue, districtValue, schemeName) => {
@@ -115,12 +141,12 @@ const TargetSection = ({ stateValue, districtValue }) => {
             <div className=" shadow-customShadow rounded mt-4 p-3 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 target-card-section">
               {infoCards &&
                 infoCards.map((info, index) => {
-                  const logoUrl = `images/schemes/${info.Project_Code}.png`;
+                  const logoUrl = `images/schemes/${info.Project_Code}`;
                   return (
                     <div key={index} className="">
                       <div className="target-card">
                         <div className="target-card-header">
-                          <div className="flex items-center">
+                          <div className="flex target-title items-center">
                             <img src={logoUrl} className="logo" alt="" />
                             <h2 className=" ml-2 font-bold">{info.scheme}</h2>
                           </div>
@@ -170,7 +196,10 @@ const TargetSection = ({ stateValue, districtValue }) => {
                 onClick={() => handleTabClick("NA")}
               >
                 <h2 className="text-[20px]">
-                  <span className="text-[26px] font-bold">(14)</span> NA Schemes
+                  <span className="text-[26px] font-bold">
+                    ({districtCount && districtCount.length})
+                  </span>{" "}
+                  NA Schemes
                 </h2>
                 <img src={NA} className="NA" alt="" />
               </div>
@@ -181,8 +210,11 @@ const TargetSection = ({ stateValue, districtValue }) => {
                 onClick={() => handleTabClick("")}
               >
                 <h2 className="text-[20px]">
-                  <span className="text-[26px] font-bold">(10)</span> Possible
-                  Reasons
+                  <span className="text-[26px] font-bold">
+                    {" "}
+                    ({districtCount && districtCount.length})
+                  </span>{" "}
+                  Possible Reasons
                 </h2>
                 <img src={bulb} className="bulb" alt="" />
               </div>

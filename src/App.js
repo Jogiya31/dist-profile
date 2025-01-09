@@ -157,7 +157,6 @@ function App() {
   // Function to handle state filter selection
   const handleStateFilter = (newSelected) => {
     setCurrentFilter("state");
-
     if (newSelected.length) {
       const newAr = [newSelected[newSelected.length - 1]];
       setStateValue(newAr[0].label);
@@ -262,11 +261,11 @@ function App() {
           <img className="header-img" src={headercenter} alt="" />
           <img className="header-img" src={headerleft} alt="" />
         </div>
-        <div className="grid grid-cols-2 bg-white gap-4 border-t border-t-[#e4e4e4]">
-          <div className="bg-white p-4 text-right ">
-            <div className="flex justify-end space-x-4">
+        <div className="grid grid-cols-2 filter-header bg-white gap-4 border-t border-t-[#e4e4e4]">
+          <div className="bg-white p-4 text-right filters ">
+            <div className="flex justify-center space-x-4">
               <MultiSelect
-                className=" w-[260px] text-left cursor-pointer"
+                className=" w-[260px] text-left custom-select cursor-pointer"
                 options={statesOption}
                 value={stateFilter}
                 onChange={handleStateFilter}
@@ -277,9 +276,8 @@ function App() {
                 }}
                 hasSelectAll={false}
               />
-
               <MultiSelect
-                className=" w-[260px] text-left cursor-pointer"
+                className=" w-[260px] text-left custom-select cursor-pointer"
                 options={districtOption}
                 value={districtFilter}
                 onChange={handleDistrictFilter}
@@ -291,7 +289,7 @@ function App() {
                 hasSelectAll={false}
               />
               <button
-                className={`bg-customBlue w-[95px] text-white rounded-[4px]  ${
+                className={`bg-customBlue apply w-[95px] text-white rounded-[4px]  ${
                   districtValue === ""
                     ? "opacity-35"
                     : "opacity-100 cursor-pointer"

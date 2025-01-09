@@ -161,9 +161,9 @@ const SchemesSection = () => {
     <>
       <div className="container-flex bg-primary-bg pb-12">
         <img src={sectionBg} alt="" />
-        <div className="custom-container ">
+        <div className="custom-container schemes-slick">
           <div className="flex justify-between">
-            <h2 className="text-2xl text-neutral-800  font-semibold">
+            <h2 className="text-2xl text-neutral-800 slick-title  font-semibold">
               Schemes available in the District
             </h2>
             <div>

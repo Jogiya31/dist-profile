@@ -1,8 +1,22 @@
 import sectionBg from "../assets/images/sectionbg.png";
 import dots from "../assets/images/dots.png";
 import LineChart from "./Linechart";
+import { useSelector } from "react-redux";
 
 const ForecastSection = () => {
+  const allSchemesDistrictData = useSelector(
+    (state) => state.allScheme.districtdata || []
+  ); //allscheme list from Redux store
+
+  const options = () =>
+    allSchemesDistrictData &&
+    allSchemesDistrictData.Table &&
+    allSchemesDistrictData.Table.map((item, index) => (
+      <option value={item} key={item.project_code}>
+        {item.project_name}
+      </option>
+    ));
+
   return (
     <div className="container-flex bg-primary-bg pb-12">
       <img src={sectionBg} alt="" />
@@ -11,10 +25,7 @@ const ForecastSection = () => {
           <div className="forcast-map">
             <h1 className="forcast-title">Forecast Section</h1>
             <div className="forcast-filter">
-              <select className="custome-select">
-                <option>Jal Jeevan Mission</option>
-                <option>Jal Jeevan Mission</option>
-              </select>
+              <select className="custome-select">{options()}</select>
               <select className="custome-select">
                 <option>5Yr</option>
                 <option>5yr</option>
