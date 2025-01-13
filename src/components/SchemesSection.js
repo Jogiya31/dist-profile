@@ -36,7 +36,6 @@ const SchemesSection = () => {
   };
   useEffect(() => {
     if (allSchemesData && allSchemesData.Table && allSchemesData.Table.length) {
-
       // Count occurrences of sec_code
       const secCodeCounts =
         allSchemesData &&
@@ -52,9 +51,11 @@ const SchemesSection = () => {
           const matchingSector =
             sectorsList &&
             sectorsList.Table &&
-            sectorsList.Table.find((sector) => sector.Id === String(sec_code));
+            sectorsList.Table.find(
+              (sector) => String(sector.id) === String(sec_code)
+            );
           return {
-            title: matchingSector ? matchingSector.Sector_name : sec_code,
+            title: matchingSector ? matchingSector.Sector_name : '',
             count,
             sec_code,
           };
@@ -175,6 +176,8 @@ const SchemesSection = () => {
           {/* Sector Carousel */}
           <Slider {...settings} inert>
             {sectorCards.map((card, index) => {
+              console.log("card", card);
+
               const logoUrl = `images/sector/${card.sec_code}.png`;
               return (
                 <div key={index} className="sector-card">

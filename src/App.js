@@ -247,7 +247,12 @@ function App() {
         })
       ); // Fetch all scheme information
 
-      dispatch(aboutActions.getaboutInfo(filterPayload)); // Fetch district information
+      dispatch(
+        aboutActions.getaboutInfo({
+          districtName: districtValue,
+          stateName: stateValue,
+        })
+      ); // Fetch district information
 
       setshowData(true);
     }

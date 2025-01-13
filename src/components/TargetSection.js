@@ -261,7 +261,9 @@ const TargetSection = ({ stateValue, districtValue }) => {
       </div>
 
       <CustomModal toggleModal={toggleModal} isModalOpen={isModalOpen}>
-        <p className="mb-5 font-normal text-gray-700">{schemeReasion}</p>
+        <p className="mb-5 font-normal text-gray-700">
+          {schemeReasion && schemeReasion.reason}
+        </p>
       </CustomModal>
     </>
   );
