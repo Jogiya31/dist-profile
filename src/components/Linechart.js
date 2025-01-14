@@ -3,9 +3,9 @@ import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
-const LineChart = () => {
+const LineChart = ({ data, labels }) => {
   const chartRef = useRef(null);
-  let lineChartInstance = null;
+  const chartInstanceRef = useRef(null); // Keep track of the chart instance
 
   useEffect(() => {
     const kpi1 = chartRef.current.getContext("2d");
@@ -21,17 +21,18 @@ const LineChart = () => {
     gradient1.addColorStop(0, "rgba(126, 171, 217, 1)");
     gradient1.addColorStop(1, "rgba(126, 171, 217, 0)");
 
-    if (lineChartInstance) {
-      lineChartInstance.destroy();
+    if (chartInstanceRef.current) {
+      chartInstanceRef.current.destroy(); // Destroy the previous instance before creating a new one
     }
 
-    lineChartInstance = new Chart(kpi1, {
+    // Create the chart
+    chartInstanceRef.current = new Chart(kpi1, {
       type: "line",
       data: {
-        labels: ["January", "February", "March", "April", "May", "June"],
+        labels: labels || [],
         datasets: [
           {
-            data: [120, 190, 170, 250, 220, 300],
+            data: data || [],
             fill: true,
             backgroundColor: gradient1,
             borderColor: "rgb(109, 148, 188,0)",
@@ -87,12 +88,13 @@ const LineChart = () => {
       plugins: [ChartDataLabels],
     });
 
+    // Cleanup on component unmount
     return () => {
-      if (lineChartInstance) {
-        lineChartInstance.destroy();
+      if (chartInstanceRef.current) {
+        chartInstanceRef.current.destroy();
       }
     };
-  }, []);
+  }, [data, labels]); // Add data and labels to the dependency array
 
   return (
     <div style={{ position: "relative", width: "100%", height: "auto" }}>

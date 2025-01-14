@@ -14,7 +14,7 @@ const SchemesSection = () => {
 
   // get data from redux store
   const allSchemesData = useSelector((state) => state.allScheme.data || []); //allscheme list from Redux store
-  const sectorsList = useSelector((state) => state.filters.sectors); // Sectors list from Redux store
+  const sectorsList = useSelector((state) => state.filters.sectors || []); // Sectors list from Redux store
 
   const generateKey = (item) => `${item}-${new Date().getTime()}`;
 
@@ -55,7 +55,7 @@ const SchemesSection = () => {
               (sector) => String(sector.id) === String(sec_code)
             );
           return {
-            title: matchingSector ? matchingSector.Sector_name : '',
+            title: matchingSector ? matchingSector.Sector_name : "",
             count,
             sec_code,
           };
@@ -176,8 +176,6 @@ const SchemesSection = () => {
           {/* Sector Carousel */}
           <Slider {...settings} inert>
             {sectorCards.map((card, index) => {
-              console.log("card", card);
-
               const logoUrl = `images/sector/${card.sec_code}.png`;
               return (
                 <div key={index} className="sector-card">

@@ -2,7 +2,9 @@ import { combineReducers } from "@reduxjs/toolkit";
 import allSchemeReducer from "../redux/allScheme/allSchemeSlice";
 import filtersReducer from "../redux/filters/filtersSlice";
 import aboutReducer from "../redux/about/aboutSlice";
-import NAschemesReducer from "../redux/NAschemes/NAschemesSlice";
+import NAschemesReducer from "../redux/targetSchemes/NAschemesSlice";
+import TargetschemesReducer from "../redux/targetSchemes/TargetschemesSlice";
+import forecastschemesReducer from "../redux/forecast/forecastschemesSlice";
 /**
  * here we combine all pages reducer for gets update redux state
  **/
@@ -16,6 +18,10 @@ const rootReducer = combineReducers({
   about: aboutReducer,  
   // Reducer for managing NAschemes info state
   NAschemes: NAschemesReducer,
+  // Reducer for managing Targetschemes info state
+  Targetschemes: TargetschemesReducer,
+  // Reducer for managing Forecast schemes info state
+  forecastschemes: forecastschemesReducer,
 
 });
 

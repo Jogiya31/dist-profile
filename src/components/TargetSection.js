@@ -6,7 +6,7 @@ import bulb from "../assets/images/bulb.png";
 import "../assets/css/TargetSection.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NAschemesActions } from "../redux/NAschemes/NAschemesSlice";
+import { NAschemesActions } from "../redux/targetSchemes/NAschemesSlice";
 import CustomModal from "./CustomModal";
 
 const TargetSection = ({ stateValue, districtValue }) => {
@@ -22,56 +22,9 @@ const TargetSection = ({ stateValue, districtValue }) => {
     (state) => state.allScheme.districtdata || []
   ); //allscheme list from Redux store
 
-  const infoCards = [
-    {
-      scheme: "PM Bhartiya Janaushadhi Pariyojana",
-      kpi: "No. of Household Tap Connections",
-      presentValue: "34.09 L",
-      targetValue: "62.53 L",
-      percent: "50.5%",
-      Project_Code: "70003.png",
-    },
-    {
-      scheme: "Jal Jeevan Mission",
-      kpi: "No. of Household Tap Connections",
-      presentValue: "34.09 L",
-      targetValue: "62.53 L",
-      percent: "50.5%",
-      Project_Code: "70003.png",
-    },
-    {
-      scheme: "Bharat Net",
-      kpi: "No. of Villages Covered",
-      presentValue: "34.09 L",
-      targetValue: "62.53 L",
-      percent: "50.5%",
-      Project_Code: "70003.png",
-    },
-    {
-      scheme: "Agriculture Infrastructure Fund",
-      kpi: "Jan Aushadhi Kendra",
-      presentValue: "34.09 L",
-      targetValue: "62.53 L",
-      percent: "50.5%",
-      Project_Code: "70003.png",
-    },
-    {
-      scheme: "Agriculture Infrastructure Fund",
-      kpi: "Jan Aushadhi Kendra",
-      presentValue: "34.09 L",
-      targetValue: "62.53 L",
-      percent: "50.5%",
-      Project_Code: "70003.png",
-    },
-    {
-      scheme: "Agriculture Infrastructure Fund",
-      kpi: "Jan Aushadhi Kendra",
-      presentValue: "34.09 L",
-      targetValue: "62.53 L",
-      percent: "50.5%",
-      Project_Code: "70003.png",
-    },
-  ];
+  const targetSchemeData = useSelector(
+    (state) => state.Targetschemes.data || []
+  );
 
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
@@ -134,24 +87,28 @@ const TargetSection = ({ stateValue, districtValue }) => {
                 <img src={target} className="header-logo" alt="" />
               </div>
               <div className="target-header-right">
-                <h2 className="text-xl text-white font-bold ">Schemes (27)</h2>
+                <h2 className="text-xl text-white font-bold ">
+                  Schemes ({targetSchemeData && targetSchemeData.length})
+                </h2>
                 <img src={upArrow} className="header-logo" alt="" />
               </div>
             </div>
             <div className=" shadow-customShadow rounded mt-4 p-3 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 target-card-section">
-              {infoCards &&
-                infoCards.map((info, index) => {
-                  const logoUrl = `images/schemes/${info.Project_Code}`;
+              {targetSchemeData &&
+                targetSchemeData.map((info, index) => {
+                  const logoUrl = `images/schemes/${info.project_code}.png`;
                   return (
                     <div key={index} className="">
                       <div className="target-card">
                         <div className="target-card-header">
                           <div className="flex target-title items-center">
                             <img src={logoUrl} className="logo" alt="" />
-                            <h2 className=" ml-2 font-bold">{info.scheme}</h2>
+                            <h2 className=" ml-2 font-bold">
+                              {info.scheme_name}
+                            </h2>
                           </div>
                           <span className="per-achieved text-white">
-                            {info.percent} Achieved
+                            {info.Achieved_Percentage.toFixed(2)}% Achieved
                           </span>
                         </div>
                         <div className="target-content grid grid-cols-2 gap-4">
@@ -160,9 +117,9 @@ const TargetSection = ({ stateValue, districtValue }) => {
                               (Present Value)
                             </h2>
                             <div className="p-2 shadow-customShadow rounded present w-full">
-                              <p className="text-gray-600">{info.kpi}</p>
+                              <p className="text-gray-600">{info.KPI}</p>
                               <h3 className="text-lg font-semibold">
-                                {info.presentValue}
+                                {info.Present_Value}
                               </h3>
                             </div>
                           </div>
@@ -171,9 +128,9 @@ const TargetSection = ({ stateValue, districtValue }) => {
                               (Target Value)
                             </h2>
                             <div className="p-2 shadow-customShadow rounded target bg-green-50 ">
-                              <p className="text-gray-600">{info.kpi}</p>
+                              <p className="text-gray-600">{info.Target_KPI}</p>
                               <h3 className="text-lg font-semibold">
-                                {info.targetValue}
+                                {info.Target_Value}
                               </h3>
                             </div>
                           </div>

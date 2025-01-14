@@ -15,6 +15,7 @@ import { filtersActions } from "./redux/filters/filtersSlice";
 import { allSchemeActions } from "./redux/allScheme/allSchemeSlice";
 import { MultiSelect } from "react-multi-select-component";
 import { aboutActions } from "./redux/about/aboutSlice";
+import { TargetschemesActions } from "./redux/targetSchemes/TargetschemesSlice";
 
 function App() {
   const dispatch = useDispatch(); // Redux dispatch hook
@@ -32,9 +33,9 @@ function App() {
   });
   const [showData, setshowData] = useState(false);
 
-  const statesList = useSelector((state) => state.filters.states); // States list from Redux store
-  const districtsList = useSelector((state) => state.filters.districts); // Districts list from Redux store
-  const aboutDistrict = useSelector((state) => state.about.data); // Districts list from Redux store
+  const statesList = useSelector((state) => state.filters.states || []); // States list from Redux store
+  const districtsList = useSelector((state) => state.filters.districts || []); // Districts list from Redux store
+  const aboutDistrict = useSelector((state) => state.about.data || []); // Districts list from Redux store
 
   // calling default api here
   useEffect(() => {
@@ -254,6 +255,13 @@ function App() {
         })
       ); // Fetch district information
 
+      dispatch(
+        TargetschemesActions.getTargetschemesInfo({
+          stateCode: filterPayload.StateCode,
+          districtCode: filterPayload.DistrictCode,
+        })
+      ); // Fetch target Schemes information
+
       setshowData(true);
     }
   };
@@ -327,7 +335,10 @@ function App() {
             stateValue={stateValue}
             districtValue={districtValue}
           />
-          <ForecastSection />
+          <ForecastSection
+            StateCode={filterPayload.StateCode || ""}
+            DistrictCode={filterPayload.DistrictCode || ""}
+          />
         </main>
       ) : (
         <main className="bg-primary-bg">

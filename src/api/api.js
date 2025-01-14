@@ -43,27 +43,6 @@ export const sectorList = () => {
 };
 
 
-// // api call for get about info
-// export const aboutInfo = (data) => {
-//   const payload = data.payload;
-//   const url = `/district_profilling`;
-//   return axiosClient().post(url, payload, {
-//     "Content-Type": "application/json",
-//   });
-// };
-
-
-// // api call for get NAschemes info
-// export const NAschemesInfo = (data) => {
-//   const payload = data.payload;
-//   const url = `/unimplemented_schemes`;
-//   return axiosClient().post(url, payload, {
-//     "Content-Type": "application/json",
-//   });
-// };
-
-
-
 // api call for get about info
 export const aboutInfo = (data) => {
   const payload = data.payload;
@@ -82,6 +61,25 @@ export const NAschemesInfo = (data) => {
     "Content-Type": "application/json",
   });
 };
+
+// api call for get NAschemes info
+export const TargetschemesInfo = (data) => {
+  const payload = data.payload;
+  const url = `http://127.0.0.1:8000/fetch_kpi_data`;
+  return axios.post(url, payload, {
+    "Content-Type": "application/json",
+  });
+};
+
+// api call for get NAschemes info
+export const forecastschemesInfo = (data) => {
+  const payload = data.payload;
+  const url = `/Prayas2.0_API/api/DemoController/GetCriticalKpisReport`;
+  return axiosClient().post(url, payload, {
+    "Content-Type": "application/json",
+  });
+};
+
 
 
 /**

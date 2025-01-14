@@ -1,21 +1,107 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import sectionBg from "../assets/images/sectionbg.png";
 import dots from "../assets/images/dots.png";
 import LineChart from "./Linechart";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { MultiSelect } from "react-multi-select-component";
+import { useEffect, useState } from "react";
+import { forecastschemesActions } from "../redux/forecast/forecastschemesSlice";
 
-const ForecastSection = () => {
+const ForecastSection = ({ StateCode, DistrictCode }) => {
+  const dispatch = useDispatch(); // Redux dispatch hook
+
+  const [schemeOptions, setschemeOptions] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [schemeValue, setSchemeValue] = useState(""); // Selected state value state
+  const [schemeFilter, setSchemeFilter] = useState([]); // State filter state
+  const [dataValue, setDataValue] = useState([]);
+  const [labelsValue, setLabelsValue] = useState([]);
+
   const allSchemesDistrictData = useSelector(
     (state) => state.allScheme.districtdata || []
   ); //allscheme list from Redux store
 
-  const options = () =>
-    allSchemesDistrictData &&
-    allSchemesDistrictData.Table &&
-    allSchemesDistrictData.Table.map((item, index) => (
-      <option value={item} key={item.project_code}>
-        {item.project_name}
-      </option>
-    ));
+  const forecastData = useSelector((state) => state.forecastschemes.data || []);
+  const loader = useSelector((state) => state.forecastschemes.loader || []);
+
+  useEffect(() => {
+    // Extract the first data entry (assuming there is only one).
+    const dataEntry = forecastData && forecastData.Data && forecastData.Data[0];
+
+    // Process Date_Value into an array.
+    const dateValues =
+      dataEntry && dataEntry.Date_Value.replace(/"/g, "").split(",");
+
+    // Process Final_Value into an array of numbers.
+    const finalValues =
+      dataEntry && dataEntry.Final_Value.split(",").map(Number);
+
+    if (dateValues || finalValues) {
+      setLabelsValue(dateValues);
+      setDataValue(finalValues);
+    }
+  }, [forecastData]);
+
+  useEffect(() => {
+    let options = [];
+    // Update state dropdown list
+    if (
+      allSchemesDistrictData &&
+      allSchemesDistrictData.Table &&
+      allSchemesDistrictData.Table.length > 0
+    ) {
+      options = [];
+      allSchemesDistrictData &&
+        allSchemesDistrictData.Table &&
+        allSchemesDistrictData.Table.forEach((item) => {
+          if (item.project_name) {
+            options.push({
+              label: item.project_name,
+              value: item.project_code,
+            });
+          }
+        });
+      setschemeOptions([...options]);
+    }
+  }, [allSchemesDistrictData]);
+
+  // Function to handle state filter selection
+  const handleSchemeFilter = (newSelected) => {
+    if (newSelected.length) {
+      const newAr = [newSelected[newSelected.length - 1]];
+      setSchemeValue(newAr[0].label);
+      setSchemeFilter(newAr);
+      dispatch(
+        forecastschemesActions.getforecastschemesInfo({
+          SectorCode: "",
+          DeptCode: "",
+          StateCode: StateCode,
+          DistrictCode: DistrictCode,
+          SchemeName: newAr[0].label,
+          KpiName: "",
+        })
+      );
+    } else {
+      setSchemeFilter([]);
+      setSchemeValue("");
+      dispatch(forecastschemesActions.clearData());
+    }
+  };
+
+  // Custom item renderer function for rendering dropdown options
+  const customItemRenderer = ({ option, isSelected, onClick }) => (
+    <div>
+      {/* Hidden input to manage selection */}
+      <input
+        className="hidden"
+        type="radio"
+        checked={isSelected}
+        onChange={() => onClick(option)}
+      />
+      {/* Displaying the option label */}
+      {option.label}
+    </div>
+  );
 
   return (
     <div className="container-flex bg-primary-bg pb-12">
@@ -25,16 +111,23 @@ const ForecastSection = () => {
           <div className="forcast-map">
             <h1 className="forcast-title">Forecast Section</h1>
             <div className="forcast-filter">
-              <select className="custome-select">{options()}</select>
-              <select className="custome-select">
-                <option>5Yr</option>
-                <option>5yr</option>
-              </select>
+              <MultiSelect
+                className=" w-[260px] text-left custom-select cursor-pointer mr-2"
+                options={schemeOptions}
+                value={schemeFilter}
+                onChange={handleSchemeFilter}
+                ItemRenderer={customItemRenderer}
+                closeOnChangedValue={true}
+                overrideStrings={{
+                  selectSomeItems: "Select scheme...",
+                }}
+                hasSelectAll={false}
+              />
               <img src={dots} className="dots" alt="" />
             </div>
           </div>
           <div className="p-4">
-            <LineChart />
+            <LineChart data={dataValue} labels={labelsValue} loader={loader} />
           </div>
         </div>
         <div>
