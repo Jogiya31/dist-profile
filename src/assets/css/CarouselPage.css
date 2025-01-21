@@ -97,7 +97,7 @@
 /* -----------------------------KPI Cards------------------------------------------------- */
 .card-scroller {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   /* Optional: Start from right */
   overflow-x: scroll;
   /* Prevent scrollbars from showing */
@@ -105,16 +105,56 @@
   /* Space between cards */
   padding: 16px;
   /* Optional padding around the scroller */
-  cursor: grab;
-  /* Indicate draggable area */
+  /* cursor: grab; */
   scroll-behavior: smooth;
   /* Smooth scrolling for manual interactions */
 }
 
-.card-scroller:active {
-  cursor: grabbing;
-  /* Grabbing cursor when dragging */
+
+/*--------------------------css for scrollbar-------------------------*/
+/* Apply styling to the scrollbar */
+.card-scroller {
+  scrollbar-width: thin;
+  /* Firefox: thin scrollbar */
+  scrollbar-color: transparent;
+  /* Firefox: thumb and track colors */
 }
+
+/* Webkit-based browsers */
+.card-scroller::-webkit-scrollbar {
+  width: 8px;
+  /* Width of the vertical scrollbar */
+  height: 8px;
+  /* Height of the horizontal scrollbar */
+}
+
+.card-scroller::-webkit-scrollbar-track {
+  background: transparent;
+  /* Track color */
+  border-radius: 4px;
+  /* Rounded corners for the track */
+}
+
+.card-scroller::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  /* Scrollbar thumb color */
+  border-radius: 4px;
+  /* Rounded corners for the thumb */
+  border: 2px solid #f1f1f1;
+  /* Adds space around the thumb */
+}
+
+.card-scroller::-webkit-scrollbar-thumb:hover {
+  background-color: transparent;
+  /* Darker color when hovered */
+}
+
+/* Optional: Hide scrollbar entirely (if required) */
+/* .card-scroller::-webkit-scrollbar {
+  display: none;
+} */
+
+/*---------------end scrollbar css-------------------*/
 
 .info-card {
   min-width: 311px;

@@ -7,11 +7,22 @@
     @apply text-gray-700;
     /* Apply Tailwind's text-gray-700 globally */
   }
+
+  @font-face {
+    font-family: 'Outfit';
+    src: url(./assets/fonts/Outfit-Regular.ttf) format('opentype');
+  }
 }
+
+@font-face {
+  font-family: 'Outfit';
+  src: url(./assets/fonts/Outfit-Regular.ttf) format('opentype');
+}
+
 
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
+  font-family: "Outfit", "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 14px;

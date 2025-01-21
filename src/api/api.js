@@ -1,6 +1,4 @@
-import axios from "axios";
-import axiosClient from "./axiosClient";
-
+import axiosClient, { axiosClient1 } from "./axiosClient";
 
 // ------------------api call for allscheme list page with filters---------------
 export const allSchemeInfo = (data) => {
@@ -16,7 +14,6 @@ export const allSchemeInfo = (data) => {
  * Start filter api urls
  *
  **/
-
 
 // api call for get all state list
 export const StateList = (data) => {
@@ -42,36 +39,34 @@ export const sectorList = () => {
   return axiosClient().post(url);
 };
 
-
 // api call for get about info
 export const aboutInfo = (data) => {
   const payload = data.payload;
-  const url = `http://127.0.0.1:8000/district_profilling`;
-  return axios.post(url, payload, {
+  const url = `/dotnetapi/district_profiling`;
+  return axiosClient1().post(url, payload, {
     "Content-Type": "application/json",
   });
 };
-
 
 // api call for get NAschemes info
 export const NAschemesInfo = (data) => {
   const payload = data.payload;
-  const url = `http://127.0.0.1:8000/unimplemented_schemes`;
-  return axios.post(url, payload, {
+  const url = `/dotnetapi/unimplemented_schemes`;
+  return axiosClient1().post(url, payload, {
     "Content-Type": "application/json",
   });
 };
 
-// api call for get NAschemes info
+// api call for get target schemes info
 export const TargetschemesInfo = (data) => {
   const payload = data.payload;
-  const url = `http://127.0.0.1:8000/fetch_kpi_data`;
-  return axios.post(url, payload, {
+  const url = `/dotnetapi/fetch_kpi_data`;
+  return axiosClient1().post(url, payload, {
     "Content-Type": "application/json",
   });
 };
 
-// api call for get NAschemes info
+// api call for get forecast info
 export const forecastschemesInfo = (data) => {
   const payload = data.payload;
   const url = `/Prayas2.0_API/api/DemoController/GetCriticalKpisReport`;
@@ -79,8 +74,6 @@ export const forecastschemesInfo = (data) => {
     "Content-Type": "application/json",
   });
 };
-
-
 
 /**
  *

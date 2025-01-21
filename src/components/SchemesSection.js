@@ -11,7 +11,7 @@ const SchemesSection = () => {
   let startX;
   let scrollLeft;
   const [sectorCards, setsectorCards] = useState([]);
-
+  const [scrollDirection, setScrollDirection] = useState(1); // 1 for forward, -1 for reverse
   // get data from redux store
   const allSchemesData = useSelector((state) => state.allScheme.data || []); //allscheme list from Redux store
   const sectorsList = useSelector((state) => state.filters.sectors || []); // Sectors list from Redux store
@@ -75,22 +75,26 @@ const SchemesSection = () => {
     const autoScroll = () => {
       if (scroller) {
         const maxScrollLeft = scroller.scrollWidth - scroller.clientWidth;
-
-        // Check if the scroller has reached the end
-        if (scroller.scrollLeft >= maxScrollLeft) {
-          scroller.scrollTo({ left: 0, behavior: "smooth" }); // Reset to the start
-        } else {
-          scroller.scrollBy({
-            left: 200, // Scroll left by 200px
-            behavior: "smooth", // Smooth scrolling
-          });
+       
+        // Reverse direction when the end or start is reached
+        if (scroller.scrollLeft >= maxScrollLeft && scrollDirection === 1) {
+          setScrollDirection(-1); // Change direction to reverse
+        } else if (scroller.scrollLeft <= 0 && scrollDirection === -1) {
+          setScrollDirection(1); // Change direction to forward
         }
+
+        // Scroll in the current direction
+        scroller.scrollBy({
+          left: 10 * scrollDirection, // Adjust speed (10px per interval)
+          behavior: "smooth",
+        });
+
       }
     };
 
-    const interval = setInterval(autoScroll, 2000); // Auto-scroll every 2 seconds
+    const interval = setInterval(autoScroll, 30); // Auto-scroll every 2 seconds
     return () => clearInterval(interval); // Clear interval on unmount
-  }, [allSchemesData, sectorsList]);
+  }, [scrollDirection, allSchemesData, sectorsList]);
 
   const handleMouseDown = (e) => {
     isDragging = true;

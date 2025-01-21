@@ -16,6 +16,7 @@ import { allSchemeActions } from "./redux/allScheme/allSchemeSlice";
 import { MultiSelect } from "react-multi-select-component";
 import { aboutActions } from "./redux/about/aboutSlice";
 import { TargetschemesActions } from "./redux/targetSchemes/TargetschemesSlice";
+import banner from "./assets/images/banner.png";
 
 function App() {
   const dispatch = useDispatch(); // Redux dispatch hook
@@ -160,7 +161,7 @@ function App() {
     setCurrentFilter("state");
     if (newSelected.length) {
       const newAr = [newSelected[newSelected.length - 1]];
-      setStateValue(newAr[0].label);
+      // setStateValue(newAr[0].label);
       setStateFilter(newAr);
     } else {
       setStateFilter([]);
@@ -173,7 +174,7 @@ function App() {
     setCurrentFilter("district");
     if (newSelected.length) {
       const newAr = [newSelected[newSelected.length - 1]];
-      setDistrictValue(newAr[0].label);
+      // setDistrictValue(newAr[0].label);
       setdistrictFilter(newAr);
 
       const getDistObject =
@@ -203,9 +204,9 @@ function App() {
             getStatObject && getStatObject[0] && getStatObject[0].state_code,
         },
       ]);
-      setStateValue(
-        getStatObject && getStatObject[0] && getStatObject[0].State_Name
-      );
+      // setStateValue(
+      //   getStatObject && getStatObject[0] && getStatObject[0].State_Name
+      // );
     } else {
       setdistrictFilter([]);
       setDistrictValue("");
@@ -227,7 +228,9 @@ function App() {
   );
 
   const handleApply = () => {
-    if (stateValue && districtValue) {
+    if (stateFilter.length > 0 && districtFilter.length > 0) {
+      setDistrictValue(districtFilter[0].label);
+      setStateValue(stateFilter[0].label);
       dispatch(
         allSchemeActions.getAllSchemeInfo({
           MinistryCode: "0",
@@ -250,8 +253,8 @@ function App() {
 
       dispatch(
         aboutActions.getaboutInfo({
-          districtName: districtValue,
-          stateName: stateValue,
+          stateCode: filterPayload.StateCode,
+          districtCode: filterPayload.DistrictCode,
         })
       ); // Fetch district information
 
@@ -303,12 +306,12 @@ function App() {
               />
               <button
                 className={`bg-customBlue apply w-[95px] text-white rounded-[4px]  ${
-                  districtValue === ""
+                  districtFilter.length < 1
                     ? "opacity-35"
                     : "opacity-100 cursor-pointer"
                 }`}
                 onClick={() => handleApply()}
-                disabled={districtValue === ""}
+                disabled={districtFilter.length < 1}
               >
                 Apply
               </button>
@@ -328,7 +331,7 @@ function App() {
                 stateFilter && stateFilter[0] && stateFilter[0].value
               }.svg`
             }
-            insites={aboutDistrict && aboutDistrict.about}
+            insites={aboutDistrict[0] && aboutDistrict[0].aboutDistrict}
           />
           <SchemesSection />
           <TargetSection
@@ -344,9 +347,43 @@ function App() {
         <main className="bg-primary-bg">
           <img src={sectionBg} alt="" />
           <div className="custom-container flex justify-center">
-            <span className="message">
-              Please select State/UT and/or District
-            </span>
+            <div className="w-[70%] justify-center items-center">
+              {/* <span className="flex justify-center message">
+                Please select State/UT and/or District
+              </span> */}
+              <h1 className="flex justify-center text-xl text-[#1269A9] font-bold underline  ">
+                District Profiling: An In-Depth Analysis
+              </h1>
+              <p className="text-justify mt-4">
+                District profiling is a comprehensive approach to collecting,
+                analyzing, and presenting data about a specific administrative
+                area. It provides insights into the district’s demographics,
+                socio-economic conditions, infrastructure, geography, and more.
+                This document delves into the various aspects of district
+                profiling, offering a detailed overview of its components,
+                benefits, and potential applications.
+              </p>
+              <div className="flex justify-between mt-4">
+                <ol>
+                  <li>1. Geography and Location </li>
+                  <li>2. Demographics</li>
+                  <li>3. Economy</li>
+                  <li>4. Education</li>
+                </ol>
+                <ol>
+                  <li>5. Health </li>
+                  <li>6. Infrastructure</li>
+                  <li>7. Governance</li>
+                </ol>
+                <ol>
+                  <li>8. Culture and Heritage</li>
+                  <li> 9. Environment and Natural Resources</li>
+                  <li>10. Key Challenges and Opportunities</li>
+                </ol>
+              </div>
+
+              <img src={banner} className="mt-10" alt="banners"></img>
+            </div>
           </div>
         </main>
       )}
