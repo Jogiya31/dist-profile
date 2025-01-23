@@ -51,7 +51,7 @@ export const aboutInfo = (data) => {
 // api call for get NAschemes info
 export const NAschemesInfo = (data) => {
   const payload = data.payload;
-  const url = `/dotnetapi/unimplemented_schemes`;
+  const url = `/dotnetapi/fetch_na_scheme_reasons`;
   return axiosClient1().post(url, payload, {
     "Content-Type": "application/json",
   });

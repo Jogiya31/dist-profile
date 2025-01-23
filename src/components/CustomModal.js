@@ -10,7 +10,7 @@ const CustomModal = ({ isModalOpen, toggleModal, children }) => {
             <div className="bg-white rounded-lg shadow">
               <div className="px-3 flex justify-between items-center w-full">
                 <h2 className="">
-                  <h2> Reasion</h2>
+                  <h2 className=" font-bold text-lg"> Possible Reason</h2>
                 </h2>
                 {/* Close button */}
                 <button

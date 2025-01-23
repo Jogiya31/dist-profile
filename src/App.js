@@ -335,8 +335,8 @@ function App() {
           />
           <SchemesSection />
           <TargetSection
-            stateValue={stateValue}
-            districtValue={districtValue}
+            stateCode={filterPayload.StateCode || ""}
+            districtCode={filterPayload.DistrictCode || ""}
           />
           <ForecastSection
             StateCode={filterPayload.StateCode || ""}

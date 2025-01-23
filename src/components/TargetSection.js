@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NAschemesActions } from "../redux/targetSchemes/NAschemesSlice";
 import CustomModal from "./CustomModal";
 
-const TargetSection = ({ stateValue, districtValue }) => {
+const TargetSection = ({ stateCode, districtCode }) => {
   const dispatch = useDispatch(); // Redux dispatch hook
   const [toggleTab, setToggleTab] = useState("NA");
   const [districtCount, setdistrictCount] = useState([]);
@@ -62,12 +62,12 @@ const TargetSection = ({ stateValue, districtValue }) => {
     setdistrictCount(difference);
   }, [allSchemesData, allSchemesDistrictData]);
 
-  const handleSchemeClick = (stateValue, districtValue, schemeName) => {
+  const handleSchemeClick = (stateCode, districtCode, projectCode) => {
     dispatch(
       NAschemesActions.getNAschemesInfo({
-        schemeName: schemeName,
-        districtName: districtValue,
-        stateName: stateValue,
+        projectCode: projectCode,
+        districtCode: districtCode,
+        stateCode: stateCode,
       })
     );
     toggleModal();
@@ -187,9 +187,9 @@ const TargetSection = ({ stateValue, districtValue }) => {
                         className=""
                         onClick={() =>
                           handleSchemeClick(
-                            stateValue,
-                            districtValue,
-                            item.project_name
+                            stateCode,
+                            districtCode,
+                            item.project_code
                           )
                         }
                       >
@@ -219,7 +219,7 @@ const TargetSection = ({ stateValue, districtValue }) => {
 
       <CustomModal toggleModal={toggleModal} isModalOpen={isModalOpen}>
         <p className="mb-5 font-normal text-gray-700">
-          {schemeReasion && schemeReasion.reason}
+          {schemeReasion && schemeReasion[0] && schemeReasion[0].possibleReason}
         </p>
       </CustomModal>
     </>
